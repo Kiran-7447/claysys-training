@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Contact Form Exercise</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+    }
+
+    header {
+      text-align: center;
+      padding: 20px;
+    }
+
+    nav {
+      background: black;
+      padding: 10px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin: 0;
+      padding: 0;
+      color: white;
+    }
+
+    .form-container {
+      width: 350px;
+      margin: 30px auto;
+      border: 1px solid #999;
+      padding: 20px;
+    }
+
+    .form-container h2 {
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      box-sizing: border-box;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 15px;
+      padding: 10px;
+      background: black;
+      color: white;
+      border: none;
+    }
+
+    footer {
+      text-align: center;
+      margin: 20px;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <header>
+    <h1>Contact Form Exercise</h1>
+  </header>
+
+  <nav>
+    <ul>
+      <li>Home</li>
+      <li>About</li>
+      <li>Contact</li>
+    </ul>
+  </nav>
+
+  <div class="form-container">
+    <h2>Contact Us</h2>
+
+    <form>
+      <label>Name:</label>
+      <input type="text">
+
+      <label>Email:</label>
+      <input type="email">
+
+      <label>Phone:</label>
+      <input type="tel">
+
+      <label>Message:</label>
+      <textarea rows="4"></textarea>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <footer>
+    <p>© 2024 My First HTML Form</p>
+  </footer>
+
+</body>
+</html>
