@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+
+<body>
+
+    <div class="dashboard-wrapper">
+        <div class="dashboard">
+
+            <aside class="sidebar" id="sidebar">
+                <h2 class="logo">Your</h2>
+                <nav class="menu">
+                    <a class="menu-item" href="#">
+                        <i class="fa-solid fa-border-all"></i>
+                        <span>Dashboard</span>
+                    </a>
+                    <a class="menu-item" href="#">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span>Orders</span>
+                    </a>
+                    <a class="menu-item" href="#">
+                        <i class="fa-solid fa-chart-pie"></i>
+                        <span>Statistic</span>
+                    </a>
+                    <a class="menu-item" href="#">
+                        <i class="fa-solid fa-box"></i>
+                        <span>Product</span>
+                    </a>
+                    <a class="menu-item" href="#">
+                        <i class="fa-solid fa-warehouse"></i>
+                        <span>Stock</span>
+                    </a>
+                    <a class="menu-item" href="#">
+                        <i class="fa-solid fa-tag"></i>
+                        <span>Offer</span>
+                    </a>
+                </nav>
+            </aside>
+
+            <main class="content">
+
+                <header class="topbar">
+                    <div class="hamburger" onclick="toggleMenu()">
+                        ☰
+                    </div>
+                    <div class="overlay" onclick="closeMenu()"></div>
+                    <h2 class="title">Order</h2>
+                    <div class="search-container">
+                    <div class="search-box">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" placeholder="Search in Knock N' Door">
+                    </div>
+                    </div>
+
+                    <div class="top-actions">
+                        <div class="notification">
+                            <i class="fa-regular fa-bell"></i>
+                            <span class="dot"></span>
+                        </div>
+
+                        <div class="profile">
+                            <img src="images/profile.jpg" alt="profile">
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                    </div>
+                </header>
+
+                <section class="card">
+                    <div class="order-header">
+                        <div>
+                            <h2>Pickup 1</h2>
+                            <p>24 Orders - 9:05 am</p>
+                        </div>
+                        <div class="pickups-container">
+                            <span class="pickups">Pickups</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    <div class="order-row">
+                        <span class="order-id">#2539</span>
+                        <span class="customer">Jordan Smith</span>
+                        <span class="date">31 July 2020</span>
+                        <span class="amount">£46.00</span>
+                        <span class="status completed">Completed</span>
+
+                        <div class="icons">
+                            <span class="gear"><i class="fa-solid fa-gear settings-icon"></i>
+                            </span>
+                            <span class="arrow"><i class="fa-solid fa-chevron-down"></i></span>
+                        </div>
+                    </div>
+
+                    <div class="table-container">
+                        <div class="order-card">
+                            <div class="row header">
+                                <span>Order Id</span>
+                                <span>Customer</span>
+                                <span>Date</span>
+                                <span>Price</span>
+                                <span>Status</span>
+                                <span class="action-header">
+                                    Action
+                                    <span class="arrow-up"><i class="fa-solid fa-chevron-up"></i></span>
+                                </span>
+                            </div>
+                            <div class="row data">
+                                <span>#2540</span>
+                                <span>Rowena Rice</span>
+                                <span>31July 2020</span>
+                                <span>£62.00</span>
+                                <span class="status pending">Pending</span>
+                                <span class="action"><i class="fa-solid fa-gear settings-icon"></i>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="order-details">
+                            <h2>Order Details</h2>
+
+                            <div class="details">
+                                <table>
+                                    <colgroup>
+                                        <col style="width:8%">
+                                        <col style="width:42%">
+                                        <col style="width:15%">
+                                        <col style="width:15%">
+                                        <col style="width:20%">
+                                    </colgroup>
+
+                                    <thead>
+                                        <tr>
+                                            <th>Sn</th>
+                                            <th>Product Name</th>
+                                            <th>Quantity</th>
+                                            <th>Price</th>
+                                            <th>Total Price</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <tr>
+                                            <td>1.</td>
+                                            <td>Cheese Stack</td>
+                                            <td>1 pic</td>
+                                            <td>£2.00</td>
+                                            <td>£2.00</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>2.</td>
+                                            <td>Greek Style Salad</td>
+                                            <td>2 pic</td>
+                                            <td>£4.00</td>
+                                            <td>£8.00</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>3.</td>
+                                            <td>30 Chicken Satay & Peanut Dip</td>
+                                            <td>3 pic</td>
+                                            <td>£11.00</td>
+                                            <td>£33.00</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>4.</td>
+                                            <td>Wrap Platter</td>
+                                            <td>1 pic</td>
+                                            <td>£15.00</td>
+                                            <td>£15.00</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>5.</td>
+                                            <td>Moroccan style couscous</td>
+                                            <td>2 pic</td>
+                                            <td>£3.00</td>
+                                            <td>£6.00</td>
+                                        </tr>
+
+                                        <tr class="total-row">
+                                            <td colspan="4" class="total">Total Price</td>
+                                            <td>£62.00</td>
+                                        </tr>
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="actions">
+                                <button class="cancel">Cancel Order</button>
+                                <button class="accept">Accept for Pickup</button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="order-row-pending">
+                        <span class="order-id">#2539</span>
+                        <span class="customer">Jordan Smith</span>
+                        <span class="date">31 July 2020</span>
+                        <span class="amount">£46.00</span>
+                        <span class="status pending">Pending</span>
+
+                        <div class="icons">
+                            <span class="gear"><i class="fa-solid fa-gear settings-icon"></i></span>
+                            <span class="arrow"><i class="fa-solid fa-chevron-down"></i></span>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+    <script>
+        function toggleMenu() {
+            document.getElementById("sidebar").classList.toggle("active");
+            document.querySelector(".overlay").classList.toggle("active");
+        }
+        function closeMenu() {
+            document.getElementById("sidebar").classList.remove("active");
+            document.querySelector(".overlay").classList.remove("active");
+        }
+    </script>
+</body>
+
+</html>
