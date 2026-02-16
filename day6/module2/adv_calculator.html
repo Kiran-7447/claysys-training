@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Advanced Simple Interest Calculator</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background: white;
+    width: 500px;
+    padding: 30px;
+    border: 3px solid #4aa3b5;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-top: 15px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 20px;
+    background: #2e7d32;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #1b5e20;
+}
+
+.result {
+    margin-top: 25px;
+}
+
+.result p {
+    font-size: 18px;
+    margin: 8px 0;
+}
+
+.additional {
+    color: #555;
+    font-size: 14px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Advanced Simple Interest Calculator</h1>
+
+    <label>Principal Amount:</label>
+    <input type="number" id="principal" placeholder="Enter principal amount">
+
+    <label>Rate of Interest (%):</label>
+    <input type="number" id="rate" placeholder="Enter interest rate">
+
+    <label>Time (Years):</label>
+    <input type="number" id="time" placeholder="Enter time in years">
+
+    <button onclick="calculateInterest()">Calculate Interest</button>
+
+    <div class="result">
+        <p><strong>Interest:</strong> <span id="interest">-</span></p>
+        <p><strong>Total Amount:</strong> <span id="total">-</span></p>
+        <p><strong>Additional Information:</strong></p>
+        <p class="additional" id="info">Enter values and click calculate</p>
+    </div>
+</div>
+
+<script>
+function calculateInterest() {
+
+    const principal = parseFloat(document.getElementById("principal").value);
+    let rate = parseFloat(document.getElementById("rate").value);
+    const time = parseFloat(document.getElementById("time").value);
+
+    if (isNaN(principal) || isNaN(rate) || isNaN(time) || 
+        principal <= 0 || rate <= 0 || time <= 0) {
+        alert("Please enter valid positive values.");
+        return;
+    }
+
+    let originalRate = rate;
+    let bonus = 0;
+
+    // Bonus rule
+    if (time > 5) {
+        bonus = 2;
+        rate = rate + bonus;
+    }
+
+    // Simple Interest Formula
+    const interest = (principal * rate * time) / 100;
+    const totalAmount = principal + interest;
+
+    // Display results
+    document.getElementById("interest").textContent = "$" + interest.toFixed(2);
+    document.getElementById("total").textContent = "$" + totalAmount.toFixed(2);
+
+    // Additional info message
+    let message = `Applied Base Rate: ${originalRate}%`;
+
+    if (bonus > 0) {
+        message += `. Applied a +2% bonus for duration > 5 years. Total Rate: ${rate}%`;
+    } else {
+        message += `. No bonus applied.`;
+    }
+
+    document.getElementById("info").textContent = message;
+}
+</script>
+
+</body>
+</html>
