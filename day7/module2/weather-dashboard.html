@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weather Dashboard</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.outer-box {
+    border: 3px solid #3b82f6;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.inner-box {
+    width: 600px;
+    background: white;
+    border: 2px solid black;
+    border-radius: 8px;
+    padding: 25px;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+.search-container {
+    display: flex;
+    margin-bottom: 25px;
+}
+
+input {
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+}
+
+button {
+    padding: 10px 25px;
+    background: #1e3a8a;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background: #162d6b;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    margin: 12px 0;
+    font-size: 18px;
+}
+
+.label {
+    font-weight: bold;
+}
+
+#error {
+    color: red;
+    margin-top: 15px;
+}
+
+#icon {
+    margin-top: 10px;
+}
+</style>
+</head>
+<body>
+
+<div class="outer-box">
+    <div class="inner-box">
+        <h1>Weather Dashboard</h1>
+
+        <div class="search-container">
+            <input type="text" id="cityInput" placeholder="Enter city name">
+            <button onclick="getWeather()">Search</button>
+        </div>
+
+        <div class="row">
+            <div class="label">City Name:</div>
+            <div id="cityName">-</div>
+        </div>
+
+        <div class="row">
+            <div class="label">Temperature:</div>
+            <div id="temperature">-</div>
+        </div>
+
+        <div class="row">
+            <div class="label">Humidity:</div>
+            <div id="humidity">-</div>
+        </div>
+
+        <div class="row">
+            <div class="label">Weather Icon:</div>
+            <div><img id="icon" width="60"></div>
+        </div>
+
+        <div id="error"></div>
+    </div>
+</div>
+
+<script>
+const apiKey = "8c41a219f5b37891fe8f783419dd0767";
+
+async function getWeather() {
+    const city = document.getElementById("cityInput").value.trim();
+    const errorDiv = document.getElementById("error");
+
+    if (!city) {
+        errorDiv.textContent = "Please enter a city name!";
+        return;
+    }
+
+    try {
+        errorDiv.textContent = "";
+
+        const response = await fetch(
+            `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`
+        );
+
+        if (!response.ok) {
+            throw new Error("City not found!");
+        }
+
+        const data = await response.json();
+
+        document.getElementById("cityName").textContent = data.name;
+        document.getElementById("temperature").textContent = data.main.temp + " °C";
+        document.getElementById("humidity").textContent = data.main.humidity + " %";
+
+        const iconCode = data.weather[0].icon;
+        document.getElementById("icon").src =
+            `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
+
+    } catch (error) {
+        document.getElementById("cityName").textContent = "-";
+        document.getElementById("temperature").textContent = "-";
+        document.getElementById("humidity").textContent = "-";
+        document.getElementById("icon").src = "";
+        errorDiv.textContent = error.message;
+    }
+}
+</script>
+
+</body>
+</html>
