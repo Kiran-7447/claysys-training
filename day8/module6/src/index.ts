@@ -1,52 +1,29 @@
 const display = document.getElementById("display") as HTMLInputElement;
-const buttons = document.querySelectorAll("button");
 
-let currentInput: string = "";
-let firstValue: number | null = null;
-let operator: string | null = null;
+let expression: string = "";
 
-buttons.forEach((button) => {
-  button.addEventListener("click", () => {
-    const value = button.textContent || "";
+document.querySelectorAll("button").forEach(button => {
+    button.addEventListener("click", () => {
+        const value = button.textContent;
 
-    if (!isNaN(Number(value))) {
-      currentInput += value;
-      display.value = currentInput;
-    }
+        if (!value) return;
 
-    else if (value === "C") {
-      currentInput = "";
-      firstValue = null;
-      operator = null;
-      display.value = "0";
-    }
-
-    else if (value === "=") {
-      if (firstValue !== null && operator) {
-        const secondValue = Number(currentInput);
-        let result = 0;
-
-        if (operator === "/" && secondValue === 0) {
-          display.value = "Error";
-          return;
+        if (value === "C") {
+            expression = "";
+            display.value = "";
         }
-
-        if (operator === "+") result = firstValue + secondValue;
-        if (operator === "-") result = firstValue - secondValue;
-        if (operator === "*") result = firstValue * secondValue;
-        if (operator === "/") result = firstValue / secondValue;
-
-        display.value = result.toString();
-        currentInput = result.toString();
-        firstValue = null;
-        operator = null;
-      }
-    }
-
-    else {
-      firstValue = Number(currentInput);
-      operator = value;
-      currentInput = "";
-    }
-  });
+        else if (value === "=") {
+            try {
+                expression = eval(expression).toString();
+                display.value = expression;
+            } catch {
+                display.value = "Error";
+                expression = "";
+            }
+        }
+        else {
+            expression += value;
+            display.value = expression;
+        }
+    });
 });

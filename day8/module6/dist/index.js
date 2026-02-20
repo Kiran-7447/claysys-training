@@ -1,48 +1,27 @@
-"use strict";
 const display = document.getElementById("display");
-const buttons = document.querySelectorAll("button");
-let currentInput = "";
-let firstValue = null;
-let operator = null;
-buttons.forEach((button) => {
+let expression = "";
+document.querySelectorAll("button").forEach(button => {
     button.addEventListener("click", () => {
-        const value = button.textContent || "";
-        if (!isNaN(Number(value))) {
-            currentInput += value;
-            display.value = currentInput;
-        }
-        else if (value === "C") {
-            currentInput = "";
-            firstValue = null;
-            operator = null;
-            display.value = "0";
+        const value = button.textContent;
+        if (!value)
+            return;
+        if (value === "C") {
+            expression = "";
+            display.value = "";
         }
         else if (value === "=") {
-            if (firstValue !== null && operator) {
-                const secondValue = Number(currentInput);
-                let result = 0;
-                if (operator === "/" && secondValue === 0) {
-                    display.value = "Error";
-                    return;
-                }
-                if (operator === "+")
-                    result = firstValue + secondValue;
-                if (operator === "-")
-                    result = firstValue - secondValue;
-                if (operator === "*")
-                    result = firstValue * secondValue;
-                if (operator === "/")
-                    result = firstValue / secondValue;
-                display.value = result.toString();
-                currentInput = result.toString();
-                firstValue = null;
-                operator = null;
+            try {
+                expression = eval(expression).toString();
+                display.value = expression;
+            }
+            catch (_a) {
+                display.value = "Error";
+                expression = "";
             }
         }
         else {
-            firstValue = Number(currentInput);
-            operator = value;
-            currentInput = "";
+            expression += value;
+            display.value = expression;
         }
     });
 });
