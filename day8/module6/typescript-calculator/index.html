@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TypeScript Calculator</title>
+  <style>
+    body {
+      background: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+    }
+
+    /* OUTER BORDER */
+    .outer-box {
+      border: 3px solid #9ec3e6;
+      padding: 15px;
+    }
+
+    /* INNER BORDER */
+    .calculator {
+      border: 2px solid #000;
+      padding: 20px;
+      width: 300px;
+    }
+
+    /* DISPLAY */
+    #display {
+      width: 100%;
+      height: 50px;
+      font-size: 24px;
+      text-align: right;
+      padding-right: 10px;
+      margin-bottom: 20px;
+      border: 2px solid #000;
+      box-sizing: border-box;
+    }
+
+    /* BUTTON GRID */
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+    }
+
+    button {
+      height: 60px;
+      font-size: 20px;
+      border: 2px solid #000;
+      background: white;
+      cursor: pointer;
+    }
+
+    button:active {
+      background: #eee;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="outer-box">
+  <div class="calculator">
+
+    <input type="text" id="display" value="0" readonly />
+
+    <div class="buttons">
+      <button>7</button>
+      <button>8</button>
+      <button>9</button>
+      <button>/</button>
+
+      <button>4</button>
+      <button>5</button>
+      <button>6</button>
+      <button>*</button>
+
+      <button>1</button>
+      <button>2</button>
+      <button>3</button>
+      <button>-</button>
+
+      <button>0</button>
+      <button>C</button>
+      <button>=</button>
+      <button>+</button>
+    </div>
+
+  </div>
+</div>
+
+<script type="module" src="./dist/index.js"></script>
+
+</body>
+</html>
