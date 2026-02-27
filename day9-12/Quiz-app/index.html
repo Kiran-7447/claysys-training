@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Application</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page">
+    <header>
+      <h1 id="headerTitle">Quiz Application</h1>
+      <div class="header-actions">
+        <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">Dark mode</button>
+        <a href="#" class="btn secondary" id="headerHome">Home</a>
+        <a href="#" class="btn secondary" id="headerAdmin">Admin</a>
+        <button type="button" class="btn" id="headerLogout" style="display:none;">Logout</button>
+      </div>
+    </header>
+
+    <main id="mainContent">
+      <!-- HOME: Course selection -->
+      <section id="screen-home" class="screen">
+        <h2 class="section-title">Select a Course and Enter Your Name</h2>
+        <div class="courses-grid" id="coursesGrid"></div>
+        <div class="recent-section" id="recentSection">
+          <h3 class="section-title">Recent Quizzes</h3>
+          <div class="recent-cards" id="recentCards"></div>
+        </div>
+      </section>
+
+      <!-- QUIZ -->
+      <section id="screen-quiz" class="screen" style="display:none;">
+        <div class="quiz-header">
+          <span class="course-name" id="quizCourseName"></span>
+          <div>
+            <span class="timer-wrap" id="timerWrap">Time: <span id="timerDisplay">--:--</span></span>
+            <span class="user-name" id="quizUserName"></span>
+          </div>
+        </div>
+        <div class="progress-bar-wrap"><div class="progress-bar-fill" id="progressBar" style="width:0%;"></div></div>
+        <div class="question-block">
+          <p class="question-number" id="questionNumber"></p>
+          <p class="question-text" id="questionText"></p>
+          <ul class="options-list" id="optionsList" role="radiogroup"></ul>
+        </div>
+        <nav class="quiz-nav">
+          <button type="button" class="btn secondary" id="backBtn">Back</button>
+          <button type="button" class="btn" id="nextBtn">Next</button>
+        </nav>
+      </section>
+
+      <!-- RESULTS -->
+      <section id="screen-results" class="screen" style="display:none;">
+        <h2 class="section-title" id="resultsHeader"></h2>
+        <div class="results-card">
+          <p class="score-display" id="scoreDisplay">0/0</p>
+          <p class="percentage" id="percentageDisplay">0%</p>
+          <h3 id="breakdownTitle">Detailed Breakdown</h3>
+          <ul class="breakdown-list" id="breakdownList"></ul>
+          <h3 id="leaderboardTitle">Leaderboard</h3>
+          <div id="leaderboardWrap">
+            <table class="leaderboard-table">
+              <thead><tr><th>Rank</th><th>User</th><th>Score</th><th>Date</th></tr></thead>
+              <tbody id="leaderboardBody"></tbody>
+            </table>
+          </div>
+          <div class="results-actions">
+            <button type="button" class="btn" id="retakeBtn">Retake Quiz</button>
+            <button type="button" class="btn secondary" id="anotherCourseBtn">Choose Another Course</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ADMIN LOGIN -->
+      <section id="screen-admin-login" class="screen" style="display:none;">
+        <h2 class="section-title">Admin Login</h2>
+        <div class="results-card" style="max-width:400px;">
+          <p>Default: <strong>admin</strong> / <strong>admin123</strong></p>
+          <form id="loginForm">
+            <div class="form-group">
+              <label for="loginUser">Username</label>
+              <input type="text" id="loginUser" required>
+            </div>
+            <div class="form-group">
+              <label for="loginPass">Password</label>
+              <input type="password" id="loginPass" required>
+            </div>
+            <p class="error-message" id="loginError" hidden></p>
+            <button type="submit" class="btn">Login</button>
+          </form>
+        </div>
+      </section>
+
+      <!-- ADMIN DASHBOARD -->
+      <section id="screen-admin-dashboard" class="screen" style="display:none;">
+        <nav class="admin-nav">
+          <a href="#" data-screen="admin-dashboard">Dashboard</a>
+          <a href="#" data-screen="admin-leaderboard">Manage Leaderboard</a>
+          <a href="#" data-screen="admin-quizzes">Create/Edit Quizzes</a>
+        </nav>
+        <h2 class="section-title">Overview</h2>
+        <div class="dashboard-cards" id="dashboardCards"></div>
+      </section>
+
+      <!-- ADMIN LEADERBOARD -->
+      <section id="screen-admin-leaderboard" class="screen" style="display:none;">
+        <nav class="admin-nav">
+          <a href="#" data-screen="admin-dashboard">Dashboard</a>
+          <a href="#" data-screen="admin-leaderboard">Manage Leaderboard</a>
+          <a href="#" data-screen="admin-quizzes">Create/Edit Quizzes</a>
+        </nav>
+        <h2 class="section-title">Manage Leaderboard</h2>
+        <div class="form-group">
+          <label for="adminCourseSelect">Course</label>
+          <select id="adminCourseSelect"></select>
+        </div>
+        <table class="data-table">
+          <thead><tr><th>Rank</th><th>User</th><th>Score</th><th>Date</th><th>Actions</th></tr></thead>
+          <tbody id="adminScoresBody"></tbody>
+        </table>
+        <div class="results-card" style="margin-top:1.5rem;">
+          <h3>Add Score Manually</h3>
+          <form id="addScoreForm">
+            <div class="form-group">
+              <label for="addUserName">User Name</label>
+              <input type="text" id="addUserName" required>
+            </div>
+            <div class="form-group">
+              <label for="addScore">Score</label>
+              <input type="number" id="addScore" min="0" required>
+            </div>
+            <div class="form-group">
+              <label for="addTotal">Total</label>
+              <input type="number" id="addTotal" min="1" required>
+            </div>
+            <div class="form-group">
+              <label for="addDate">Date</label>
+              <input type="date" id="addDate" required>
+            </div>
+            <button type="submit" class="btn">Add Score</button>
+          </form>
+        </div>
+      </section>
+
+      <!-- ADMIN QUIZZES -->
+      <section id="screen-admin-quizzes" class="screen" style="display:none;">
+        <nav class="admin-nav">
+          <a href="#" data-screen="admin-dashboard">Dashboard</a>
+          <a href="#" data-screen="admin-leaderboard">Manage Leaderboard</a>
+          <a href="#" data-screen="admin-quizzes">Create/Edit Quizzes</a>
+        </nav>
+        <h2 class="section-title">Create/Edit Quizzes</h2>
+        <div class="form-group">
+          <label for="quizSelect">Select quiz</label>
+          <select id="quizSelect"><option value="">-- Create new --</option></select>
+        </div>
+        <div id="newQuizForm" class="results-card" style="display:none;">
+          <h3>New Quiz</h3>
+          <form id="createQuizForm">
+            <div class="form-group"><label for="newQuizTitle">Title</label><input type="text" id="newQuizTitle"></div>
+            <div class="form-group"><label for="newQuizDesc">Description</label><input type="text" id="newQuizDesc"></div>
+            <button type="submit" class="btn">Create</button>
+          </form>
+        </div>
+        <h3>Questions</h3>
+        <ul id="questionList"></ul>
+        <div class="results-card" style="margin-top:1rem;">
+          <h3>Add Question</h3>
+          <form id="addQuestionForm">
+            <div class="form-group"><label for="questionText">Question</label><textarea id="questionText" rows="2"></textarea></div>
+            <div class="form-group"><label for="questionOptions">Options (one per line)</label><textarea id="questionOptions" rows="4"></textarea></div>
+            <div class="form-group"><label for="correctIndex">Correct (1-4)</label><select id="correctIndex"><option value="0">1</option><option value="1">2</option><option value="2">3</option><option value="3">4</option></select></div>
+            <button type="submit" class="btn">Save Question</button>
+          </form>
+        </div>
+        <button type="button" class="btn" id="saveQuizBtn" style="margin-top:1rem;">Save Quiz</button>
+      </section>
+    </main>
+
+    <footer>
+      <a href="#" id="footerHome">Home</a>
+      <button type="button" class="theme-toggle" id="themeToggleFooter" aria-label="Toggle dark mode">Dark mode</button>
+    </footer>
+  </div>
+  <script src="app.js"></script>
