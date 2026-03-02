@@ -13,7 +13,7 @@
 
     <!-- MAIN BUTTON -->
     <button id="mainBtn" class="bang-btn" onclick="showVideo()">
-        🔥 Click to see the BANG
+        Click to see the BANG
     </button>
 
     <!-- VIDEO -->
@@ -21,15 +21,17 @@
         <source src="video.mp4" type="video/mp4">
     </video>
 
-    <!-- CONTROL BUTTONS -->
+    <!-- CONTROLS -->
     <div id="controls" class="controls" style="display:none;">
-        <button class="control-btn replay" onclick="replayVideo()">Replay</button>
 
-        <button id="pauseBtn" class="control-btn pause" onclick="toggleVideo()">
-            Pause
+        <button class="control-btn" onclick="replayVideo()">↻</button>
+
+        <button id="pauseBtn" class="control-btn" onclick="toggleVideo()">
+            ❚❚
         </button>
 
-        <button class="control-btn back" onclick="goBack()">Back</button>
+        <button class="control-btn" onclick="goBack()">←</button>
+
     </div>
 
 </div>

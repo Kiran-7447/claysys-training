@@ -1,55 +1,68 @@
 body{
     margin:0;
     background:#111;
-    font-family:Arial;
-    color:white;
-}
-
-/* Full center layout */
-.container{
+    font-family:Arial, sans-serif;
     display:flex;
-    flex-direction:column;
     justify-content:center;
     align-items:center;
     height:100vh;
 }
 
-/* Image & Video same size */
+/* Center container */
+.container{
+    text-align:center;
+}
+
+/* Image & Video */
 .media{
     width:360px;
     height:640px;
     object-fit:cover;
+    border-radius:15px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.6);
 }
 
 /* Main Button */
 .bang-btn{
-    margin-top:15px;
+    margin-top:20px;
     padding:12px 25px;
-    background:linear-gradient(45deg, red, orange);
-    color:white;
-    font-weight:bold;
+    background:#fff;
+    color:#111;
     border:none;
-    border-radius:30px;
+    border-radius:25px;
+    font-weight:bold;
     cursor:pointer;
+    transition:0.3s;
 }
 
-/* Control buttons alignment */
+.bang-btn:hover{
+    opacity:0.8;
+}
+
+/* Control buttons */
 .controls{
-    margin-top:15px;
+    margin-top:20px;
     display:flex;
-    gap:15px;
+    justify-content:center;
+    gap:20px;
 }
 
-/* Common control style */
 .control-btn{
-    padding:8px 20px;
+    width:55px;
+    height:55px;
+    border-radius:50%;
     border:none;
-    border-radius:20px;
+    background:#222;
+    color:#fff;
+    font-size:22px;
     cursor:pointer;
-    font-weight:bold;
+    transition:0.3s;
 }
 
-/* Individual colors */
-.replay{ background:green; color:white; }
-.pause{ background:orange; color:black; }
-.back{ background:red; color:white; }
+.control-btn:hover{
+    background:#444;
+}
+
+.control-btn:active{
+    transform:scale(0.9);
+}

@@ -10,26 +10,23 @@ function showVideo(){
     document.getElementById("controls").style.display="flex";
 }
 
-/* Replay */
 function replayVideo(){
     var video=document.getElementById("myVideo");
     video.currentTime=0;
     video.play();
-
-    document.getElementById("pauseBtn").innerText="Pause";
+    document.getElementById("pauseBtn").innerHTML="❚❚";
 }
 
-/* Toggle Play / Pause */
 function toggleVideo(){
     var video=document.getElementById("myVideo");
     var btn=document.getElementById("pauseBtn");
 
     if(video.paused){
         video.play();
-        btn.innerText="Pause";
+        btn.innerHTML="❚❚";
     } else {
         video.pause();
-        btn.innerText="Play";
+        btn.innerHTML="▶";
     }
 }
 
@@ -41,7 +38,7 @@ function goBack(){
 
     document.getElementById("controls").style.display="none";
     document.getElementById("myImage").style.display="block";
-    document.getElementById("mainBtn").style.display="block";
+    document.getElementById("mainBtn").style.display="inline-block";
 
-    document.getElementById("pauseBtn").innerText="Pause";
+    document.getElementById("pauseBtn").innerHTML="❚❚";
 }
