@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image to Video</title>
+</head>
+<body>
+
+<img id="myImage" src="auto-expo.jpeg" width="360" height="640">
+<br><br>
+<a href="#" onclick="showVideo()">Click to see the BANG</a>
+<br><br>
+<video id="myVideo" width="360" height="640" style="display:none;">
+    <source src="video.mp4" type="video/mp4">
+</video>
+<script>
+function showVideo() {
+    document.getElementById("myImage").style.display = "none";
+    var video = document.getElementById("myVideo");
+    video.style.display = "block";
+    video.muted = false;
+    video.play();
+}
+</script>
+
+</body>
+</html>
