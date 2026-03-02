@@ -1,0 +1,55 @@
+body{
+    margin:0;
+    background:#111;
+    font-family:Arial;
+    color:white;
+}
+
+/* Full center layout */
+.container{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+/* Image & Video same size */
+.media{
+    width:360px;
+    height:640px;
+    object-fit:cover;
+}
+
+/* Main Button */
+.bang-btn{
+    margin-top:15px;
+    padding:12px 25px;
+    background:linear-gradient(45deg, red, orange);
+    color:white;
+    font-weight:bold;
+    border:none;
+    border-radius:30px;
+    cursor:pointer;
+}
+
+/* Control buttons alignment */
+.controls{
+    margin-top:15px;
+    display:flex;
+    gap:15px;
+}
+
+/* Common control style */
+.control-btn{
+    padding:8px 20px;
+    border:none;
+    border-radius:20px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+/* Individual colors */
+.replay{ background:green; color:white; }
+.pause{ background:orange; color:black; }
+.back{ background:red; color:white; }

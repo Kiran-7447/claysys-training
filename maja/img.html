@@ -2,25 +2,38 @@
 <html>
 <head>
     <title>Image to Video</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<img id="myImage" src="auto-expo.jpeg" width="360" height="640">
-<br><br>
-<a href="#" onclick="showVideo()">Click to see the BANG</a>
-<br><br>
-<video id="myVideo" width="360" height="640" style="display:none;">
-    <source src="video.mp4" type="video/mp4">
-</video>
-<script>
-function showVideo() {
-    document.getElementById("myImage").style.display = "none";
-    var video = document.getElementById("myVideo");
-    video.style.display = "block";
-    video.muted = false;
-    video.play();
-}
-</script>
+<div class="container">
 
+    <!-- IMAGE -->
+    <img id="myImage" src="auto-expo.jpeg" class="media">
+
+    <!-- MAIN BUTTON -->
+    <button id="mainBtn" class="bang-btn" onclick="showVideo()">
+        🔥 Click to see the BANG
+    </button>
+
+    <!-- VIDEO -->
+    <video id="myVideo" class="media" style="display:none;">
+        <source src="video.mp4" type="video/mp4">
+    </video>
+
+    <!-- CONTROL BUTTONS -->
+    <div id="controls" class="controls" style="display:none;">
+        <button class="control-btn replay" onclick="replayVideo()">Replay</button>
+
+        <button id="pauseBtn" class="control-btn pause" onclick="toggleVideo()">
+            Pause
+        </button>
+
+        <button class="control-btn back" onclick="goBack()">Back</button>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
